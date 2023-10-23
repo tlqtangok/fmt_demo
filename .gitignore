@@ -30,3 +30,6 @@
 *.exe
 *.out
 *.app
+*.zip
+_3rd/fmt-master/.clang-format
+_3rd/fmt-master/.github/dependabot.yml
