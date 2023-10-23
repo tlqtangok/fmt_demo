@@ -222,3 +222,7 @@ _3rd/fmt-master/test/fuzzing/README.md
 _3rd/fmt-master/test/fuzzing/two-args.cc
 _3rd/fmt-master/test/gtest-extra-test.cc
 *.swp
+*.ilk
+*.pdb
+test-file
+*.idb
