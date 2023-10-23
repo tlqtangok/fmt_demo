@@ -5,7 +5,7 @@ set VS_CL_OPT_DEBUG=/c /ZI /JMC /nologo /W3 /WX- /diagnostics:column /sdl /O2 /D
 
 set VS_LIB_OPT=/NOLOGO /MACHINE:X64
 
-set VS_LINK_OPT_DEBUG=/ERRORREPORT:PROMPT  /INCREMENTAL /MANIFEST  /manifest:embed /DEBUG /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /MACHINE:X64 /MANIFESTUAC:"level='asInvoker' uiAccess='false'"
+set VS_LINK_OPT=/ERRORREPORT:PROMPT  /INCREMENTAL /MANIFEST  /manifest:embed /DEBUG /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /MACHINE:X64 /MANIFESTUAC:"level='asInvoker' uiAccess='false'"
 
 
 set INC=%CD%\_3rd\fmt-master\include
@@ -26,5 +26,5 @@ CL.exe  %VS_CL_OPT_DEBUG%   /I"%INC%"  main.cpp
 CL.exe  %VS_CL_OPT_NODEBUG% /I"%INC%" %SRC%\format.cc %SRC%\os.cc
 lib.exe %VS_LIB_OPT% /OUT:"slib.lib"  format.obj  os.obj 
 
-link.exe %VS_LINK_OPT_DEBUG% /implib:"slib.lib" /out:"mainapp.exe"  main.obj slib.lib
+link.exe %VS_LINK_OPT% /implib:"slib.lib" /out:"mainapp.exe"  main.obj slib.lib
 .\mainapp.exe
