@@ -226,3 +226,4 @@ _3rd/fmt-master/test/gtest-extra-test.cc
 *.pdb
 test-file
 *.idb
+*.swo
