@@ -1,4 +1,5 @@
-set VS_CL_OPT_NODEBUG=/c /ZI /nologo /W3 /WX- /diagnostics:column /sdl /O2 /Oi /D NDEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm- /EHsc /MDd /GS /Gy /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /permissive-  /external:W3 /Gd /TP /FC /errorReport:prompt
+::set VS_CL_OPT_NODEBUG=/c /ZI /nologo /W3 /WX- /diagnostics:column /sdl /O2 /Oi /D NDEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm- /EHsc /MDd /GS /Gy /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /permissive-  /external:W3 /Gd /TP /FC /errorReport:prompt
+set VS_CL_OPT_NODEBUG=/c /ZI /nologo /W3 /WX- /diagnostics:column /sdl /O2 /Oi /D NDEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm- /EHsc /MD /GS /Gy /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /permissive-  /external:W3 /Gd /TP /FC /errorReport:prompt
 set VS_CL_OPT_DEBUG=/c /ZI /JMC /nologo /W3 /WX- /diagnostics:column /sdl /O2 /D DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm- /EHsc /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /permissive-  /external:W3 /Gd /TP /FC /errorReport:prompt
 
 ::set VS_CL_OPT_NODEBUG=/c /Zi /nologo /W3 /WX- /diagnostics:column /sdl /O2 /Oi /GL /D NDEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm- /EHsc /MD /GS /Gy /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /permissive-  /external:W3 /Gd /TP /FC /errorReport:prompt
@@ -21,10 +22,23 @@ if not %errorlevel% equ 0 (
 
 del *.obj *.lib *.dll vc140.* mainapp.* *.o
 
+
+if 1 == 1 (
 CL.exe  %VS_CL_OPT_DEBUG%   /I"%INC%"  main.cpp
+
+CL.exe  %VS_CL_OPT_DEBUG% /I"%INC%" %SRC%\format.cc %SRC%\os.cc
+lib.exe %VS_LIB_OPT% /OUT:"slib.lib"  format.obj  os.obj 
+
+link.exe %VS_LINK_OPT% /implib:"slib.lib" /out:"mainapp.exe"  main.obj slib.lib
+.\mainapp.exe
+)
+
+if 0 == 1 (
+CL.exe  %VS_CL_OPT_NODEBUG%   /I"%INC%"  main.cpp
 
 CL.exe  %VS_CL_OPT_NODEBUG% /I"%INC%" %SRC%\format.cc %SRC%\os.cc
 lib.exe %VS_LIB_OPT% /OUT:"slib.lib"  format.obj  os.obj 
 
 link.exe %VS_LINK_OPT% /implib:"slib.lib" /out:"mainapp.exe"  main.obj slib.lib
 .\mainapp.exe
+)
