@@ -31,7 +31,7 @@ REM /Gw = Optimize global data, /GF = String pooling
 ::set VS_LINK_OPT_RELEASE=/LTCG /OPT:REF /OPT:ICF /SUBSYSTEM:CONSOLE /MACHINE:X64
 
 set VS_CL_OPT_RELEASE=/c /Zi /nologo /W3 /sdl /O1 /Gy /Gw /D DEBUG /D _CONSOLE /EHsc /MD /Zc:inline /permissive- /TP
-set VS_LIB_OPT_RELEASE=/NOLOGO /MACHINE:X64
+set VS_LIB_OPT_RELEASE=/NOLOGO /MACHINE:X64 /LTCG
 set VS_LINK_OPT_RELEASE=/MANIFEST /manifest:embed  /OPT:REF /OPT:ICF /SUBSYSTEM:CONSOLE /MACHINE:X64
 
 REM Set active configuration
